@@ -1,0 +1,12 @@
+<!-- 네비게이션바 -->
+<header class="header">
+    <div class="title">
+        <h1>마이 페이지</h1>
+    </div>
+    <div class="menu">
+        <a id="search_list" href="{{ url_for('blog._list') }}">메인 화면</a>
+        {% if g.user %}
+        <a href="{{ url_for('mypage.fix') }}">프로필 수정</a>
+        {% endif %}
+    </div>
+</header>

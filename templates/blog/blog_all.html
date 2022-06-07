@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% include 'navbar_all.html' %}
+{% block content %}
+<div class="d-flex justify-content-center my-3">
+  <div id="all_main">
+        <div id="main_section">
+            <div class="row my-3">
+                <div id="nav_bar" class="col-2">
+                    <select class="form-control so">
+                        <option value="recent" {% if so=='recent' %}selected{% endif %}>최신순</option>
+                        <option value="recommend" {% if so=='recommend' %}selected{% endif %}>추천순</option>
+                    </select>
+                </div>
+
+                <div class="ml-3">
+                    <div class=" input-group">
+                        <input type="text" class="form-control kw" value="{{ kw or '' }}">
+                          <div class="input-group-append" id="search">
+                            <button class="btn btn-outline-secondary" type="button" id="btn_search">검색</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="my-3" id="columns">
+                {% if blog_list and blog_list.total > 0 %}
+                    {% for blog in blog_list.items %}
+                    <figure class="paper">
+                        {% if blog.image_name and blog.image_name != '' %}
+                        <img src="{{ url_for('static', filename='images/' + blog.image_name) }}" alt="photo">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='images/default.png') }}" alt="photo">
+                        {% endif %}
+                        <div class="q_subject">
+                            <a href="{{ url_for('blog.detail', blog_id=blog.id) }}">{{ blog.title }}</a>
+                            {% if blog.voter|length > 0 %}
+                            <span class="text-danger small ml-2">{{ blog.voter|length }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="q_name">
+                            {{ blog.user.nickname }}
+                        </div>
+                    </figure>
+                    {% endfor %}
+                {% else %}
+                    <p>블로그가 없습니다.</p>
+                {% endif %}
+            </div>
+
+        </div>
+  </div>
+
+
+</div>
+
+<ul class="pagination justify-content-center">
+        <a href="{{ url_for('blog._list') }}" class="btn btn-primary">홈으로</a>
+       <!-- 이전페이지 -->
+        {% if blog_list.has_prev %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ blog_list.prev_num }}" href="#">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        {% for page_num in blog_list.iter_pages() %}
+            {% if page_num %}
+                {% if page_num != blog_list.page %}
+                <li class="page-item">
+                    <a class="page-link" data-page="{{ page_num }}" href="#">{{ page_num }}</a>
+                </li>
+                {% else %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">{{ page_num }}</a>
+                </li>
+                {% endif %}
+           {% else %}
+                <li class="disabled">
+                    <a class="page-link" href="#">...</a>
+                </li>
+           {% endif %}
+        {% endfor %}
+        {% if blog_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ blog_list.next_num }}" href="#">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+</ul>
+
+<form id="searchForm" method="get" action="{{ url_for('blog._all') }}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw or '' }}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+    <input type="hidden" id="so" name="so" value="{{ so }}">
+</form>
+{% endblock %}
+{% block script %}
+
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".page-link").on('click', function() {
+        $("#page").val($(this).data("page"));
+        $("#searchForm").submit();
+    });
+    $("#btn_search").on('click', function() {
+        $("#kw").val($(".kw").val());
+        $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+        $("#searchForm").submit();
+    });
+    $(".so").on('change', function() {
+        $("#so").val($(this).val());
+        $("#page").val(1);
+        $("#searchForm").submit();
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,376 @@
+* {
+    margin: 0; padding: 0;
+    font-family: 'EarlyFontDiary';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color:#FFEF85;
+    text-decoration:none
+}
+
+img {
+    border: 0;
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'EarlyFontDiary';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EarlyFontDiary.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header .menu:hover { color:#fffcd3; }
+.plus:hover { transform: scale(1.5); }
+
+body {
+    width: 100%; margin: 0 auto;
+    background: white;
+}
+
+#page-wrapper {
+
+}
+
+/*.header {
+    background-color: #6CA767;
+    width: 100%; height: 360px;
+}*/
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: minmax(330px, auto);
+    background-color: #6CA767;
+    width: 100%; height: 130px;
+    position: fixed;
+    left: 0px; top: 0px;
+    overflow: hidden;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    transition: height 0.3s;
+    line-height:60px;
+    z-index: 1;
+    text-align: center;
+}
+
+.header.shrink {
+    height: 110px;
+/*    line-height: 20px;*/
+}
+
+.header .menu {
+    grid-column: 3/4;
+    text-align: right;
+    margin-right: 30px;
+    color: black;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.header .title {
+    grid-column: 2/3;
+    text-align: center;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.header .sub {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+        /*body 태그의너비:1265*/
+        /*#page-warpper 태그의 padding 속성으로 내용물 너비는 920px*/
+        #content{ overflow: hidden;}
+
+
+        .box{
+            border: 3px solid black;
+            border-width: thick;
+            border-radius: 20px;
+            float: center;
+            margin:100px 150px;
+            width: 870px;
+            height: 610px;
+            background-color:#D9D9D9
+        }
+        .top{
+            width:872px;
+            height:155px;
+            }
+
+        .middle{
+            width:868px;
+            height:303px;
+
+
+
+
+            }
+        .down{
+            width:868px;
+            height:150px;
+
+
+            }
+        .top_left{
+            #265*150;
+            height:50px;
+            width:125px;
+            float:left;
+            padding:50px 70px;
+            text-align: center;
+
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: black;
+
+
+
+        }
+        .top_right{
+            #600/150;
+            height:50px;
+            width:500px;
+            float:left;
+            padding:50px 50px;
+            text-align: center;
+
+            border-left-style: solid;
+            border-left-width: 3px;
+            border-left-color: black;
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: black;
+        }
+        .middle_left{
+            #265*300;
+            height:40px;
+            width:65px;
+            float:left;
+            padding:130px 100px;
+
+            border-right-style: solid;
+            border-right-width: 3px;
+            border-right-color: black;
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: black;
+            text-align: center;
+
+
+        }
+        .middle_right{
+            #600*300;
+            height:200px;
+            width:400px;
+            float:left;
+            padding: 50px 100px;
+            text-align: center;
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: black;
+
+
+        }
+        .down_left{
+            #265*150;
+            height:50px;
+            width:125px;
+            float:left;
+            padding:50px 70px;
+            text-align: center;
+
+
+
+        }
+        .down_right{
+            #600/150;
+            height:50px;
+            width:500px;
+            float:left;
+            padding:50px 50px;
+            text-align: center;
+
+            border-left-style: solid;
+            border-left-width: 3px;
+            border-left-color: black;
+        }
+        .fix{
+            margin:100px 200px;
+            width: 865px;
+            height: 600px;
+            text-align:center;
+            }
+
+        .box_login{
+            border: 3px solid black;
+            border-width: thick;
+            border-radius: 20px;
+            float: center;
+            margin:100px 200px;
+            width: 870px;
+            height: 350px;
+            background-color:#D9D9D9
+        }
+        .box_signup{
+            border: 3px solid black;
+            border-width: thick;
+            border-radius: 20px;
+            float: center;
+            margin:100px 200px;
+            width: 870px;
+            height: auto;
+            background-color:#D9D9D9
+        }
+
+        li {
+          list-style: none;
+        }
+
+        img {
+          width: 200px;
+          height: 200px;
+        }
+
+        .real-upload {
+          display: none;
+        }
+
+        .upload {
+          width: 200px;
+          height: 200px;
+          background-color: antiquewhite;
+        }
+
+        .image-preview {
+          width: 1300px;
+          height: 200px;
+          background-color: aquamarine;
+          display: flex;
+          gap: 20px;
+        }
+
+#page-wrapper{
+            background: white;
+            margin: 40px 0; padding:10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3)
+        }
+        .main-title{ text-align: center;
+        }
+
+
+
+        .pull-left{float: left;}
+        .pull-right{float: right;}
+        .text-right{text-align: right;}
+        .pull-center{text-align: center;}
+
+
+
+        body{
+            width: 1850px;
+
+        }
+        #page-wrapper{
+            background: white;
+            margin: 40px 0; padding:10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3)
+        }
+        .main-title{ text-align: center;
+        }
+
+        #main-header{ padding: 40px 50px;
+
+        }
+        #main-header2{
+            width: 1265px;
+            height: 200px;
+            background-color: #6CA767;}
+        .master-title{
+            font-size: 30px;
+            color: #181818;
+            text-align: center;
+        }
+        .master-description{
+            font-size: 15px; font-weight: 500;
+        }
+
+        /*body 태그의너비:1265*/
+        /*#page-warpper 태그의 padding 속성으로 내용물 너비는 920px*/
+        #content{
+            overflow: hidden;
+            margin-top:100px;
+            width:1300px;
+            float:center;
+            margin-left:300px;
+
+
+        }
+
+        #main-section{
+            float: center;
+            width: 865px;
+            margin: 100px 0px;
+        }
+        #main-aside{
+            float: left;
+            width: 400px;
+        }
+
+
+
+        .left_box{
+            #400*600
+            border: 3px solid black;
+            border-width: thick;
+            border-radius: 20px;
+            float: left;
+            margin:50px 50px;
+
+            width: 240px;
+            height: 400px;
+            padding: 50px 30px;
+            background-color:#D9D9D9
+        }
+        .right_box{
+            #800*600
+            border: 3px solid black;
+            border-width: thick;
+            border-radius: 20px;
+            float: right;
+            margin:50px 50px;
+            width: 700px;
+            height: 500px;
+            background-color:#D9D9D9;
+        }
+
+        .aside-list{
+            padding: 10px 0 30px 0;
+            text-align: left;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+ul {
+            list-style:none;
+            margin:0;
+            padding:0;
+            }
+
+        li {
+            margin: 10px;
+            padding: 0 0 0 0;
+            border : 0;
+            float: left;
+            }

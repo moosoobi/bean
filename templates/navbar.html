@@ -1,0 +1,17 @@
+<!-- 네비게이션바 -->
+<header class="header">
+    <div class="title">
+        <h1>오늘의 주제</h1>
+        <h3>{{ subject_name }}</h3>
+    </div>
+    <div class="menu">
+        <a id="search_list" href="{{ url_for('blog._all') }}">모든 게시글</a>
+        {% if g.user %}
+        <a href="{{ url_for('mypage._list') }}">마이페이지</a>
+        <a href="{{ url_for('auth.logout') }}">{{ g.user.username }}(로그아웃)</a>
+        {% else %}
+        <a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
+        <a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
+        {% endif %}
+    </div>
+</header>

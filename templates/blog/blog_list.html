@@ -1,0 +1,87 @@
+{% extends 'base_list.html' %}
+{% include 'navbar.html' %}
+{% block content %}
+{% if blog_list and blog_list.total > 0 %}
+<section class="main-section">
+{% for blog in blog_list.items %}
+    <div class="paper">
+        <div class="paper-holder">
+            {% if blog.image_name and blog.image_name != '' %}
+            <img src="{{ url_for('static', filename='images/' + blog.image_name) }}" width="190" alt="photo">
+            {% else %}
+            <img src="{{ url_for('static', filename='images/default.png') }}" width="190" alt="photo">
+            {% endif %}
+        </div>
+            <a class="paper-link" href="{{ url_for('blog.detail', blog_id=blog.id) }}">
+            <h3 class="paper-description">{{ blog.title }}</h3>
+            </a>
+        <p class="paper-description">{{ blog.user.nickname }}</p>
+    </div>
+{% endfor %}
+</section>
+{% else %}
+<section class="main-section">
+    <div class="paper">
+        <div class="paper-holder">
+            <a class="paper-link" href="{{ url_for('blog.create') }}">블로그 작성하기</a>
+        </div>
+        <h3 class="paper-description">작성된 블로그가 없어요.</h3>
+        <p class="paper-description">강낭콩</p>
+    </div>
+</section>
+{% endif %}
+<div>
+    {% if blog_user_count > 0 %}
+        <img src="{{ url_for('static', filename='images/강낭콩.png') }}" class="plant" alt="plant">
+    {% else %}
+        <img src="{{ url_for('static', filename='images/강낭콩.png') }}" class="plant" alt="plant">
+    {% endif %}
+    <a href="{{ url_for('blog.create') }}" class="plus">+</a>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    window.addEventListener('load', () => {
+        $('.main-section').masonry({
+            itemSelector: '.paper',
+            columnWidth: 230,
+            horizontalOrder: true
+        });
+        // plant 위치 설정
+        setPlantPlusPosition();
+    });
+
+    $(function() {
+        var shrinkHeader = 200;
+        $(window).scroll(function() {
+            var scroll = getCurrentScroll();
+            if( scroll >= shrinkHeader ) {
+                $('.header').addClass('shrink');
+            }
+            else {
+                $('.header').removeClass('shrink');
+            }
+            setPlantPlusPosition();
+        });
+
+        $(window).resize(function() {
+            setPlantPlusPosition();
+        });
+    });
+
+    function getCurrentScroll() {
+        return window.pageYOffset || document.documentElement.scrollTop;
+    }
+
+    function setPlantPlusPosition() {
+        const left = window.innerWidth - 140;
+        const top = window.innerHeight + window.scrollY - 140;
+        plant = document.querySelector('.plant');
+        plus = document.querySelector('.plus');
+        plant.style.left = left + "px";
+        plant.style.top = top +"px";
+        plus.style.left = (left + 40) + "px";
+        plus.style.top = (top - 70) +"px";
+    }
+</script>
+{% endblock %}
