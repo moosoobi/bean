@@ -63,7 +63,7 @@ def _all():
             .distinct()
 
     # 페이징
-    blog_list = blog_list.paginate(page, per_page=10)
+    blog_list = blog_list.paginate(page, per_page=15)
     return render_template('blog/blog_all.html', subject_name=subject_name, blog_list=blog_list, page=page, kw=kw, so=so)
 
 

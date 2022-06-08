@@ -24,9 +24,11 @@
                             <p>사진</p>
                         </div>
                         <div class="middle_right">
-                            <input type = "file" name = "image_file" id="image_file"  accept="image/*"
-                                value="{{ form.image_file.data or '' }}">
-                            <br>
+                            <div id="image_profile">
+                                <p>프로필 사진을 업로드 해주세요</p>
+                                <input type = "file" name = "image_file" id="image_file"  accept="image/*"
+                                    value="{{ form.image_file.data or '' }}">
+                            </div>
                         </div>
                     </div>
                     <div class="down">
@@ -39,7 +41,7 @@
 
                     </div>
                 </div>
-                <button type="submit"  style="margin-left:550px;width: 100px;height: 100px;font-size: large;border-radius: 20px; border: 3px solid black;"><h3>수정</h3></button>
+                <button id="re" type="submit"  style="margin-left:550px;width: 100px;height: 100px;font-size: large;border-radius: 20px; border: 3px solid black;"><h3>수정</h3></button>
             </form>
     </div>
     <!--푸터-->

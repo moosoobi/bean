@@ -1,9 +1,15 @@
-<!-- 네비게이션바 -->
 <header class="header">
     <div class="title">
-        <h1>모든 게시글</h1>
+        <a id="title_all" href="{{url_for('blog._list') }}"><h1>강낭콩</h1></a>
+        <a href="url_for('blog._all')}}"><h5>모든 게시글</h5></a>
     </div>
     <div class="menu">
-        <a id="search_list" href="{{ url_for('blog._list') }}">메인화면</a>
+        {% if g.user %}
+        <a href="{{ url_for('mypage._list') }}">{{ g.user.username }}님의 마이페이지        </a>
+        <a href="{{ url_for('auth.logout') }}">(로그아웃)</a>
+        {% else %}
+        <a class="nav-link" id="all_nav_link" href="{{ url_for('auth.signup') }}">계정생성</a>
+        <a class="nav-link" id="all_nav_link" href="{{ url_for('auth.login') }}">로그인</a>
+        {% endif %}
     </div>
 </header>

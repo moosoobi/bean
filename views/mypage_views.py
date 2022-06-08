@@ -29,9 +29,8 @@ def fix():
         user = User.query.get(g.user.id)
 
         image_file = form.image_file.data
-
         if image_file and image_file.filename != '':
-            image_file.save(os.path.join('./static', image_file.filename))
+            image_file.save("bean/static/images/{}".format(image_file.filename))
             user.image = image_file.filename
 
         user.nickname = form.nickname.data

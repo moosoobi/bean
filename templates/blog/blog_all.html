@@ -12,50 +12,78 @@
                     </select>
                 </div>
 
+                <div class="topic_box">
+                    <div id="topic_now">
+                        현재주제: {{ subject_name }}
+                    </div>
+                    <a href="{{ url_for('blog.create') }}" id="blog_btn" class="btn btn-outline-success">글 쓰러 가기</a>
+                </div>
+
                 <div class="ml-3">
-                    <div class=" input-group">
+                    <div class=" input-group" id="search_btn">
                         <input type="text" class="form-control kw" value="{{ kw or '' }}">
                           <div class="input-group-append" id="search">
-                            <button class="btn btn-outline-secondary" type="button" id="btn_search">검색</button>
+                            <button class="btn btn-outline-success btn-block" type="button" id="btn_search">검색</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-            <div class="my-3" id="columns">
+            <div class="my-3">
                 {% if blog_list and blog_list.total > 0 %}
+                <section class="all-section">
                     {% for blog in blog_list.items %}
-                    <figure class="paper">
-                        {% if blog.image_name and blog.image_name != '' %}
-                        <img src="{{ url_for('static', filename='images/' + blog.image_name) }}" alt="photo">
-                        {% else %}
-                        <img src="{{ url_for('static', filename='images/default.png') }}" alt="photo">
-                        {% endif %}
-                        <div class="q_subject">
-                            <a href="{{ url_for('blog.detail', blog_id=blog.id) }}">{{ blog.title }}</a>
-                            {% if blog.voter|length > 0 %}
-                            <span class="text-danger small ml-2">{{ blog.voter|length }}</span>
+                    <div class="all">
+                        <div class="all-holder">
+                            {% if blog.image_name and blog.image_name != '' %}
+                            <img src="{{ url_for('static', filename='images/' + blog.image_name) }}" width="190" alt="photo">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='images/default.png') }}" width="190" alt="photo">
                             {% endif %}
                         </div>
-                        <div class="q_name">
-                            {{ blog.user.nickname }}
-                        </div>
-                    </figure>
+                        <a id="all_title" class="all-link" href="{{ url_for('blog.detail', blog_id=blog.id) }}">
+                            {{ blog.title }}
+                        </a>
+                        {{ blog.user.nickname }}
+                    </div>
                     {% endfor %}
+                </section>
                 {% else %}
-                    <p>블로그가 없습니다.</p>
+                <section class="main-section">
+                    <div class="paper">
+                        <div class="paper-holder">
+                            <a class="paper-link" href="{{ url_for('blog.create') }}">블로그 작성하기</a>
+                        </div>
+                        <h3 class="paper-description">작성된 블로그가 없어요.</h3>
+                        <p class="paper-description">강낭콩</p>
+                    </div>
+                </section>
                 {% endif %}
             </div>
 
         </div>
-  </div>
+      </div>
 
+     <!-- <div class="ml-3 my-3 mt-100 all_serve">
+          <h3 class="mt-3" style="text-align:center">{{ g.user.nickname }}</h3>
+            {% if g.user %}
+                <div class="mt-5" id="mypage_img_holder">
+                    {% if g.user.image %}
+                        <img src = "{{ url_for('static', filename = 'images/' + g.user.image )}}" style="width:200px;height:200px;margin:0 20px">
+                    {% else %}
+                        <img src = "{{ url_for('static', filename = 'images/default.png' )}}" style="width:200px;height:200px;margin:0 20px">
+                    {% endif %}
+                </div>
+                <br>
+          <a href="{{ url_for('mypage._list') }}"><h5>내 정보</h5></a>
+        {% else %}
+        {% endif %}
+      </div> -->
 
 </div>
 
+
 <ul class="pagination justify-content-center">
-        <a href="{{ url_for('blog._list') }}" class="btn btn-primary">홈으로</a>
        <!-- 이전페이지 -->
         {% if blog_list.has_prev %}
         <li class="page-item">
@@ -103,6 +131,16 @@
 {% block script %}
 
 <script type='text/javascript'>
+window.addEventListener('load', () => {
+        $('.all-section').masonry({
+            itemSelector: '.all',
+            columnWidth: 230,
+            horizontalOrder: false
+        });
+    });
+    function getCurrentScroll() {
+        return window.pageYOffset || document.documentElement.scrollTop;
+    }
 $(document).ready(function(){
     $(".page-link").on('click', function() {
         $("#page").val($(this).data("page"));

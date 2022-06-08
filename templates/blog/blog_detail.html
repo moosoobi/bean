@@ -8,18 +8,23 @@
     {% endfor %}
     <h2 class="border-bottom py-2">{{ blog.title }}</h2>
     <div class="row my-3">
-        <div class="col-1"> <!-- 추천영역 -->
-            <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{ blog.voter|length }}</div>
-            <a href="#" data-uri="{{ url_for('vote.blog', blog_id=blog.id) }}"
-               class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
-        </div>
         <div class="col-11"> <!-- 질문영역 -->
             <div class="card">
+                <div class="my-3" id="modify">
+                        <a href="{{ url_for('blog._list') }}"
+                           class="btn btn-sm btn-outline-success ">홈으로</a>
+                    {% if g.user == blog.user %}
+                        <a href="{{ url_for('blog.modify', blog_id=blog.id) }}"
+                           class="btn btn-sm btn-outline-success">수정</a>
+                        <a href="#" class="delete btn btn-sm btn-outline-success"
+                           data-uri="{{ url_for('blog.delete', blog_id=blog.id) }}">삭제</a>
+                    {% endif %}
+                </div>
                 <div class="card-body">
                     {% if blog.image_name and blog.image_name != '' %}
                     <div class="card-text"><img src="{{ url_for('static', filename='images/' + blog.image_name) }}" alt="photo"></div>
                     {% endif %}
-                    <div class="card-text">{{ blog.content }}</div>
+                    <div class="card-text" id="detail_content">{{ blog.content }}</div>
                     <div class="d-flex justify-content-end">
                         {% if blog.modify_date %}
                         <div class="badge badge-light p-2 text-left mx-3">
@@ -32,18 +37,13 @@
                             <div>{{ blog.create_date|datetime }}</div>
                         </div>
                     </div>
-                    <div class="my-3">
-                        <a href="{{ url_for('blog._list') }}"
-                           class="btn btn-sm btn-outline-secondary">홈으로</a>
-                    {% if g.user == blog.user %}
-                        <a href="{{ url_for('blog.modify', blog_id=blog.id) }}"
-                           class="btn btn-sm btn-outline-secondary">수정</a>
-                        <a href="#" class="delete btn btn-sm btn-outline-secondary"
-                           data-uri="{{ url_for('blog.delete', blog_id=blog.id) }}">삭제</a>
-                    {% endif %}
-                    </div>
                 </div>
             </div>
+        </div>
+        <div class="col-1"> <!-- 추천영역 -->
+            <div class="text-center p-3 border font-weight-bolder mb-1" id="detail_voter">{{ blog.voter|length }}</div>
+            <a href="#" data-uri="{{ url_for('vote.blog', blog_id=blog.id) }}"
+               class="recommend btn btn-sm btn-outline-success btn-block my-1">추천</a>
         </div>
     </div>
 </div>

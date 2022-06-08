@@ -93,14 +93,14 @@ body {
 
 
         .box{
-            border: 3px solid black;
+            border: 3px solid #6CA767;
             border-width: thick;
             border-radius: 20px;
             float: center;
             margin:100px 150px;
             width: 870px;
             height: 610px;
-            background-color:#D9D9D9
+            background-color:white;
         }
         .top{
             width:872px;
@@ -131,7 +131,7 @@ body {
 
             border-bottom-style: solid;
             border-bottom-width: 3px;
-            border-bottom-color: black;
+            border-bottom-color: #6CA767;
 
 
 
@@ -146,10 +146,10 @@ body {
 
             border-left-style: solid;
             border-left-width: 3px;
-            border-left-color: black;
+            border-left-color: #6CA767;
             border-bottom-style: solid;
             border-bottom-width: 3px;
-            border-bottom-color: black;
+            border-bottom-color: #6CA767;
         }
         .middle_left{
             #265*300;
@@ -160,10 +160,10 @@ body {
 
             border-right-style: solid;
             border-right-width: 3px;
-            border-right-color: black;
+            border-right-color: #6CA767;
             border-bottom-style: solid;
             border-bottom-width: 3px;
-            border-bottom-color: black;
+            border-bottom-color: #6CA767;
             text-align: center;
 
 
@@ -177,7 +177,7 @@ body {
             text-align: center;
             border-bottom-style: solid;
             border-bottom-width: 3px;
-            border-bottom-color: black;
+            border-bottom-color: #6CA767;
 
 
         }
@@ -202,7 +202,7 @@ body {
 
             border-left-style: solid;
             border-left-width: 3px;
-            border-left-color: black;
+            border-left-color: #6CA767;
         }
         .fix{
             margin:100px 200px;
@@ -212,7 +212,7 @@ body {
             }
 
         .box_login{
-            border: 3px solid black;
+            border: 3px solid #6CA767;
             border-width: thick;
             border-radius: 20px;
             float: center;
@@ -222,7 +222,7 @@ body {
             background-color:#D9D9D9
         }
         .box_signup{
-            border: 3px solid black;
+            border: 3px solid #6CA767;
             border-width: thick;
             border-radius: 20px;
             float: center;
@@ -313,7 +313,7 @@ body {
             margin-top:100px;
             width:1300px;
             float:center;
-            margin-left:300px;
+            margin-left:350px;
 
 
         }
@@ -332,12 +332,11 @@ body {
 
         .left_box{
             #400*600
-            border: 3px solid black;
+            border: 3px solid #6CA767;
             border-width: thick;
             border-radius: 20px;
             float: left;
             margin:50px 50px;
-
             width: 240px;
             height: 400px;
             padding: 50px 30px;
@@ -345,7 +344,7 @@ body {
         }
         .right_box{
             #800*600
-            border: 3px solid black;
+            border: 3px solid #6CA767;
             border-width: thick;
             border-radius: 20px;
             float: right;
@@ -357,7 +356,7 @@ body {
 
         .aside-list{
             padding: 10px 0 30px 0;
-            text-align: left;
+            text-align: center;
             font-size: 25px;
             font-weight: 500;
         }
@@ -373,4 +372,28 @@ ul {
             padding: 0 0 0 0;
             border : 0;
             float: left;
+            }
+
+            #re{
+            width:400px;
+            height: 45px;
+            color: black;
+            background-color: #6CA767;
+            }
+
+            #re:hover{
+                background-color: #005D00;
+            }
+            .form-control{
+                width:400px;
+                height: 45px;
+            }
+            #image_profile{
+                text-align:center;
+                margin-top:50px;
+            }
+
+            #image_file{
+                margin-top: 10px;
+                margin-left: 110px;
             }

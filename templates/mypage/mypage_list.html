@@ -1,7 +1,7 @@
 {% extends 'base_mypage.html' %}
 {% include 'navbar_mypage.html' %}
 {% block content %}
-<div id="main-header">
+<div class= id="main-header">
     <!--본문-->
     <div id="content">
         <!--본문 우측 영역-->
@@ -12,7 +12,7 @@
 
             <img src="{{ url_for('static', filename='images/' + level_image) }}" style="width:200px; height:400px ;margin:15px 0" />
             <div style="width: 700px; height:50px; background-color:grey ;margin-top:50px ;border-radius:30px">
-                <div class="progress-bar" style="width: {{ g.user.exp*10 }}% ;height:50px ; background-color: #85ff6e;border-radius:30px 0 0 30px" ></div>
+                <div class="progress-bar" style="width: {{ g.user.exp }}% ;height:50px ; background-color: #85ff6e;border-radius:30px 0 0 30px" ></div>
             </div>
         </div>
         <!--본문 좌측 영역-->
@@ -25,8 +25,8 @@
                         <img src = "{{ url_for('static', filename = 'images/default.png' )}}" style="width:200px;height:200px;margin:0 20px">
                     {% endif %}
                     <br>
-                    <h2 style="text-align:center; margin-top:30px">{{ g.user.nickname }}</h2>
-                    <p style="margin-top:50px;text-align:center ">{{ g.user.word }}</p>
+                    <h2 style="text-align:center">{{ g.user.nickname }}</h2>
+                    <p style="margin-top:30px;text-align:center ">{{ g.user.word }}</p>
                 {% else %}
                     <div style="padding:150px 10px "><h1>로그인 하십시오.</h1></div>
                 {% endif %}
@@ -37,6 +37,5 @@
             </div>
         </aside>
     </div>
-
 </div>
 {% endblock %}
